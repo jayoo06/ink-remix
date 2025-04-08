@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="https://generativeart.online/css/drawing-app.css">
+<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library/build/nn.min.js"></script>
+<script>
+  
+  /* global nn */
+  
+  
+function emoji () {  
+  requestAnimationFrame(emoji)
+  
+  const emojis = ['🐰','🐇','🙌','🙏','🐣','🍫','⛪','✝️','🥚','🌱',
+  '🥕','🔔','🐝','🎀','🧺','🌸','🎗️','🌼','👑','🪨']
+  const ranEmoji = nn.random(emojis)
+  
+  if (nn.mouseDown) {
+    const e = nn.create('span')
+                .content(ranEmoji)
+                .css({
+                fontSize: '36px',
+                position: 'absolute',
+                left: nn.mouseX,
+                top: nn.mouseY
+                })
+                .addTo('body')
+                .on('click', () => e.remove()) 
+  }
+  /* value of the function is () => {}, 
+  but curly braces aren't needed for single line functions */
+}
+  
+nn.on('load', emoji)
+  
+  
+  
+</script>
